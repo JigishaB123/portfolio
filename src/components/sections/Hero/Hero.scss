@@ -1,0 +1,82 @@
+@import '../../../styles/abstracts/variables';
+@import '../../../styles/abstracts/mixins';
+
+.hero {
+  min-height: 100vh;
+  @include flex-center;
+  position: relative;
+  background: linear-gradient(135deg, $gray-50 0%, $gray-200 30%, $gray-100 100%);
+
+  &__content {
+    text-align: center;
+    z-index: 10;
+    padding: 0 $spacing-4;
+  }
+
+  &__text {
+    transition: all 1s ease;
+
+    &--visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    &--hidden {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+  }
+
+  &__title {
+    font-size: clamp($font-5xl, 8vw, 6rem);
+    font-weight: $font-bold;
+    margin-bottom: $spacing-6;
+    @include gradient-text(linear-gradient(45deg, $primary-blue, $secondary-purple, $accent-purple));
+  }
+
+  &__subtitle {
+    font-size: clamp($font-xl, 4vw, $font-2xl);
+    color: $text-secondary;
+    margin-bottom: $spacing-12;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__social-links {
+    display: flex;
+    justify-content: center;
+    gap: $spacing-6;
+    margin-bottom: $spacing-12;
+  }
+
+  &__social-link {
+    padding: $spacing-3;
+    background-color: $background-tertiary;
+    border-radius: 50%;
+    color: $text-secondary;
+    text-decoration: none;
+    transition: $transition-all;
+
+    &:hover {
+      background-color: $border-light;
+      transform: translateY(-2px);
+    }
+  }
+
+  &__cta-button {
+    @include button-primary;
+    padding: $spacing-4 $spacing-8;
+    border-radius: $radius-full;
+    font-size: $font-lg;
+  }
+
+  &__scroll-indicator {
+    position: absolute;
+    bottom: $spacing-8;
+    left: 50%;
+    transform: translateX(-50%);
+    color: $text-muted;
+    animation: bounce 2s infinite;
+  }
+}

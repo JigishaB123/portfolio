@@ -1,0 +1,185 @@
+@import '../../../styles/abstracts/variables';
+@import '../../../styles/abstracts/mixins';
+
+.opensource {
+  padding: $spacing-20 $spacing-4;
+  background-color: $background-secondary;
+
+  &__container {
+    @include container;
+  }
+
+  &__content {
+    transition: all 1s ease;
+
+    &--visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    &--hidden {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+  }
+
+  &__image {
+    height: 18rem;
+    // background: linear-gradient(135deg, rgba($primary-blue, 0.1), rgba($secondary-purple, 0.1));
+    // @include flex-center;
+    // color: $text-muted;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; // or 'contain' depending on how you want the image to fit
+    }
+  }
+
+  &__title {
+    @include section-title;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-8;
+  }
+
+  &__card {
+    @include card-base;
+    padding: $spacing-6;
+
+    &:hover {
+      border-color: $success-500;
+    }
+  }
+
+  &__card-header {
+    @include flex-between;
+    align-items: flex-start;
+    margin-bottom: $spacing-4;
+    flex-wrap: wrap;
+    gap: $spacing-4;
+  }
+
+  &__title-section {
+    flex: 1;
+  }
+
+  &__title-container {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+    margin-bottom: $spacing-2;
+    flex-wrap: wrap;
+  }
+
+  &__card-title {
+    font-size: $font-xl;
+    font-weight: $font-semibold;
+    color: $text-primary;
+  }
+
+  &__role-tag {
+    padding: $spacing-1 $spacing-2;
+    background-color: $success-100;
+    color: $success-700;
+    font-size: $font-xs;
+    border-radius: $radius-full;
+    font-weight: $font-medium;
+  }
+
+  &__card-description {
+    color: $text-secondary;
+  }
+
+  &__stats {
+    display: flex;
+    gap: $spacing-4;
+    font-size: $font-sm;
+  }
+
+  &__stat {
+    text-align: center;
+
+    &-value {
+      font-weight: $font-semibold;
+      color: $text-primary;
+    }
+
+    &-label {
+      color: $text-secondary;
+      font-size: $font-xs;
+    }
+  }
+
+  &__contributions {
+    list-style: none;
+    padding: 0;
+    margin-bottom: $spacing-6;
+  }
+
+  &__contribution-item {
+    color: $text-secondary;
+    font-size: $font-sm;
+    margin-bottom: $spacing-2;
+    padding-left: $spacing-4;
+    position: relative;
+
+    &::before {
+      content: '•';
+      color: $success-500;
+      position: absolute;
+      left: 0;
+      font-weight: $font-bold;
+    }
+  }
+
+  &__footer {
+    @include flex-between;
+    flex-wrap: wrap;
+    gap: $spacing-4;
+  }
+
+  &__tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-2;
+  }
+
+  &__tech-tag {
+    padding: $spacing-1 $spacing-2;
+    background-color: rgba($primary-blue, 0.1);
+    color: $primary-blue;
+    font-size: $font-xs;
+    border-radius: $radius-full;
+    border: 1px solid rgba($primary-blue, 0.2);
+  }
+
+  &__links {
+    display: flex;
+    gap: $spacing-4;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: $spacing-1;
+    color: $text-secondary;
+    text-decoration: none;
+    font-size: $font-sm;
+    transition: $transition-colors;
+
+    &:hover {
+      color: $text-primary;
+    }
+  }
+
+  &__npm-dot {
+    width: $spacing-4;
+    height: $spacing-4;
+    background-color: $npm-red;
+    border-radius: 50%;
+  }
+}

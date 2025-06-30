@@ -1,0 +1,215 @@
+@import '../../../styles/abstracts/variables';
+@import '../../../styles/abstracts/mixins';
+
+.skills-row {
+  padding: $spacing-20 $spacing-4;
+
+  &__container {
+    @include container;
+  }
+
+  &__content {
+    transition: all 1s ease;
+
+    &--visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    &--hidden {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: $spacing-12;
+  }
+
+  &__title {
+    @include section-title;
+  }
+
+  &__description {
+    font-size: $font-lg;
+    color: $text-secondary;
+    max-width: 600px;
+    margin: $spacing-2 auto 0;
+  }
+
+  &__categories {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-6;
+  }
+
+  &__category {
+    &:not(:last-child) {
+      margin-bottom: $spacing-2;
+    }
+    @include card-base;
+    padding: $spacing-6;
+  }
+
+  &__category-title {
+    font-size: $font-xl;
+    font-weight: $font-semibold;
+    color: $primary-blue;
+    margin-bottom: $spacing-4;
+    padding-bottom: $spacing-2;
+    border-bottom: 2px solid $primary-blue;
+    display: inline-block;
+  }
+
+  &__skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-4 $spacing-6;
+    align-items: center;
+    
+    @include respond-below(md) {
+      gap: $spacing-3 $spacing-4;
+    }
+
+    @include respond-below(sm) {
+      gap: $spacing-2 $spacing-3;
+    }
+  }
+
+  &__skill-item {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+    padding: $spacing-2 $spacing-3;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background-color: $background-primary;
+    transition: all 0.3s ease;
+    cursor: default;
+
+    // &:hover {
+      transform: translateY(-2px);
+      border-color: rgba($primary-blue, 0.3);
+      box-shadow: 0 4px 12px rgba($primary-blue, 0.15);
+
+      .skills-row__skill-icon {
+        transform: scale(1.1);
+      }
+    // }
+
+    @include respond-below(md) {
+      padding: $spacing-2;
+      gap: $spacing-2;
+    }
+  }
+
+  &__skill-icon {
+    @include flex-center;
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+    width: 24px;
+    height: 24px;
+
+    @include respond-below(md) {
+      font-size: 1.25rem;
+      width: 20px;
+      height: 20px;
+    }
+
+    @include respond-below(sm) {
+      font-size: 1rem;
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  &__skill-default-icon {
+    @include flex-center;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: $primary-blue;
+    color: white;
+    border-radius: 6px;
+    font-weight: $font-bold;
+    font-size: 0.625rem;
+
+    @include respond-below(md) {
+      width: 1.25rem;
+      height: 1.25rem;
+      font-size: 0.5rem;
+    }
+
+    @include respond-below(sm) {
+      width: 1rem;
+      height: 1rem;
+      font-size: 0.4rem;
+    }
+  }
+
+  &__skill-name {
+    font-size: $font-sm;
+    font-weight: $font-medium;
+    color: $text-primary;
+    white-space: nowrap;
+
+    @include respond-below(md) {
+      font-size: 0.8rem;
+    }
+
+    @include respond-below(sm) {
+      font-size: 0.75rem;
+    }
+  }
+}
+
+// Dark theme support (if you have it)
+@media (prefers-color-scheme: dark) {
+  .skills-row {
+    &__skill-item {
+      background-color: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.1);
+
+      &:hover {
+        border-color: rgba($primary-blue, 0.5);
+        box-shadow: 0 4px 12px rgba($primary-blue, 0.25);
+      }
+    }
+  }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  .skills-row {
+    &__content {
+      transition: none;
+    }
+
+    &__skill-item {
+      transition: none;
+
+      &:hover {
+        transform: none;
+
+        .skills-row__skill-icon {
+          transform: none;
+        }
+      }
+    }
+  }
+}
+
+// Print styles
+@media print {
+  .skills-row {
+    &__skill-item {
+      break-inside: avoid;
+      border: 1px solid #000 !important;
+      background: white !important;
+
+      &__skill-name {
+        color: black !important;
+      }
+    }
+  }
+}

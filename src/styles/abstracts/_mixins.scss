@@ -1,0 +1,139 @@
+// ===========================
+// RESPONSIVE MIXINS
+// ===========================
+@mixin respond-to($breakpoint) {
+    @if $breakpoint == sm {
+      @media (min-width: #{$breakpoint-sm}) { @content; }
+    }
+    @if $breakpoint == md {
+      @media (min-width: #{$breakpoint-md}) { @content; }
+    }
+    @if $breakpoint == lg {
+      @media (min-width: #{$breakpoint-lg}) { @content; }
+    }
+    @if $breakpoint == xl {
+      @media (min-width: #{$breakpoint-xl}) { @content; }
+    }
+  }
+  
+  @mixin respond-below($breakpoint) {
+    @if $breakpoint == sm {
+      @media (max-width: #{$breakpoint-sm - 1px}) { @content; }
+    }
+    @if $breakpoint == md {
+      @media (max-width: #{$breakpoint-md - 1px}) { @content; }
+    }
+    @if $breakpoint == lg {
+      @media (max-width: #{$breakpoint-lg - 1px}) { @content; }
+    }
+    @if $breakpoint == xl {
+      @media (max-width: #{$breakpoint-xl - 1px}) { @content; }
+    }
+  }
+  
+  // ===========================
+  // LAYOUT MIXINS
+  // ===========================
+  @mixin container($max-width: $max-width-content) {
+    width: 100%;
+    max-width: $max-width;
+    margin: 0 auto;
+    padding-left: $spacing-4;
+    padding-right: $spacing-4;
+  
+    @include respond-to(lg) {
+      padding-left: $spacing-8;
+      padding-right: $spacing-8;
+    }
+  }
+  
+  @mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  @mixin flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  // ===========================
+  // VISUAL EFFECTS
+  // ===========================
+  @mixin gradient-primary($direction: 45deg) {
+    background: linear-gradient($direction, $primary-blue, $secondary-purple);
+  }
+  
+  @mixin gradient-text($gradient: linear-gradient(45deg, $primary-blue, $secondary-purple)) {
+    background: $gradient;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  @mixin glass-morphism($opacity: 0.9) {
+    background-color: rgba($white, $opacity);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba($white, 0.2);
+  }
+  
+  // ===========================
+  // COMPONENT MIXINS
+  // ===========================
+  @mixin button-base {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: $font-semibold;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: $transition-all;
+    outline: none;
+  
+    &:focus {
+      outline: 2px solid $primary-blue;
+      outline-offset: 2px;
+    }
+  
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+  
+  @mixin button-primary {
+    @include button-base;
+    @include gradient-primary;
+    color: $text-inverse;
+    box-shadow: $shadow-glow;
+  
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: $shadow-glow-lg;
+    }
+  }
+  
+  @mixin card-base {
+    background-color: $background-primary;
+    border-radius: $radius-xl;
+    border: 1px solid $border-light;
+    box-shadow: $shadow-base;
+    transition: $transition-all;
+  
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: $shadow-lg;
+    }
+  }
+  
+  @mixin section-title {
+    font-size: $font-4xl;
+    font-weight: $font-bold;
+    text-align: center;
+    margin-bottom: $spacing-16;
+    @include gradient-text;
+  }

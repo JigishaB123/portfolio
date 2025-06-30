@@ -1,0 +1,94 @@
+@import '../../../styles/abstracts/variables';
+@import '../../../styles/abstracts/mixins';
+
+.education {
+  padding: $spacing-20 $spacing-4;
+  background-color: $background-secondary;
+
+  &__container {
+    @include container;
+  }
+
+  &__content {
+    transition: all 1s ease;
+
+    &--visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    &--hidden {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+  }
+
+  &__title {
+    @include section-title;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: $spacing-8;
+  }
+
+  &__card {
+    @include card-base;
+    padding: $spacing-6;
+
+    &:hover {
+      border-color: $primary-blue;
+    }
+  }
+
+  &__card-header {
+    @include flex-between;
+    align-items: flex-start;
+    margin-bottom: $spacing-4;
+  }
+
+  &__card-title {
+    font-size: $font-xl;
+    font-weight: $font-semibold;
+    color: $text-primary;
+    margin-bottom: $spacing-1;
+  }
+
+  &__card-subtitle {
+    color: $primary-blue;
+    font-weight: $font-medium;
+  }
+
+  &__card-year {
+    color: $text-secondary;
+    font-size: $font-sm;
+  }
+
+  &__card-text {
+    color: $text-secondary;
+    margin-bottom: $spacing-4;
+  }
+
+  &__card-label {
+    color: $text-primary;
+    font-size: $font-sm;
+    margin-bottom: $spacing-2;
+    font-weight: $font-medium;
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-2;
+  }
+
+  &__tag {
+    padding: $spacing-1 $spacing-2;
+    background-color: rgba($primary-blue, 0.1);
+    color: $primary-blue;
+    font-size: $font-xs;
+    border-radius: $radius-full;
+    border: 1px solid rgba($primary-blue, 0.2);
+  }
+}

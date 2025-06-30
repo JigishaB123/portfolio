@@ -1,0 +1,17 @@
+@import '../../../styles/abstracts/variables';
+@import '../../../styles/abstracts/mixins';
+
+.footer {
+  padding: $spacing-8 $spacing-4;
+  border-top: 1px solid $border-light;
+  background-color: $background-primary;
+
+  &__container {
+    @include container;
+  }
+
+  &__text {
+    text-align: center;
+    color: $text-secondary;
+  }
+}

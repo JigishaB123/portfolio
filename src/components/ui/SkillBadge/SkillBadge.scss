@@ -1,0 +1,45 @@
+@import '../../../styles/abstracts/variables';
+@import '../../../styles/abstracts/mixins';
+
+.skill-badge {
+  padding: $spacing-2 $spacing-4;
+  font-size: $font-sm;
+  font-weight: $font-medium;
+  border-radius: $radius-full;
+  transition: $transition-all;
+  cursor: default;
+  border: 1px solid transparent;
+
+  &--primary {
+    background-color: rgba($primary-blue, 0.1);
+    color: $primary-blue;
+    border-color: rgba($primary-blue, 0.2);
+
+    &:hover {
+      background-color: rgba($primary-blue, 0.15);
+      transform: translateY(-1px);
+    }
+  }
+
+  &--secondary {
+    background-color: rgba($secondary-purple, 0.1);
+    color: $secondary-purple;
+    border-color: rgba($secondary-purple, 0.2);
+
+    &:hover {
+      background-color: rgba($secondary-purple, 0.15);
+      transform: translateY(-1px);
+    }
+  }
+
+  &--tertiary {
+    background-color: rgba($success-500, 0.1);
+    color: $success-600;
+    border-color: rgba($success-500, 0.2);
+
+    &:hover {
+      background-color: rgba($success-500, 0.15);
+      transform: translateY(-1px);
+    }
+  }
+}

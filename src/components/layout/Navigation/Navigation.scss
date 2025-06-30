@@ -1,0 +1,111 @@
+@import '../../../styles/abstracts/variables';
+@import '../../../styles/abstracts/mixins';
+
+.navigation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: $z-nav;
+  @include glass-morphism(0.9);
+  border-bottom: 1px solid $border-light;
+  box-shadow: $shadow-sm;
+
+  &__container {
+    @include container;
+  }
+
+  &__content {
+    @include flex-between;
+    padding: $spacing-4 0;
+  }
+
+  &__logo {
+    font-size: $font-2xl;
+    font-weight: $font-bold;
+    @include gradient-text;
+  }
+
+  &__desktop-nav {
+    display: flex;
+    gap: $spacing-8;
+  }
+
+  &__nav-button {
+    padding: $spacing-2 0;
+    font-size: $font-base;
+    font-weight: $font-medium;
+    color: $text-secondary;
+    transition: $transition-colors;
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+      color: $primary-blue;
+    }
+
+    &--active {
+      color: $primary-blue;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -$spacing-1;
+        left: 0;
+        right: 0;
+        height: 2px;
+        @include gradient-primary;
+        border-radius: $radius-full;
+      }
+    }
+  }
+
+  &__mobile-button {
+    padding: $spacing-2;
+    border-radius: $radius-lg;
+    color: $text-secondary;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: $transition-colors;
+
+    &:hover {
+      background-color: $background-secondary;
+    }
+
+    &--active {
+      background-color: $background-secondary;
+      color: $primary-blue;
+    }
+  }
+
+  &__mobile-menu {
+    @include glass-morphism(0.98);
+    border-top: 1px solid $border-light;
+    padding: $spacing-2;
+    box-shadow: $shadow-lg;
+    animation: slideDown $transition-fast;
+  }
+
+  &__mobile-nav-button {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: $spacing-4 $spacing-6;
+    font-size: $font-base;
+    font-weight: $font-medium;
+    color: $text-secondary;
+    border-radius: $radius-lg;
+    transition: $transition-all;
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+      color: $primary-blue;
+      background-color: $background-secondary;
+    }
+  }
+}
