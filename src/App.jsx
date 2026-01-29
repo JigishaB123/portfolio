@@ -32,7 +32,7 @@ function App() {
         <Skills isVisible={isVisible.skills}/>
         <Experience isVisible={isVisible.experience} />
         <Projects isVisible={isVisible.projects} />
-        {/* <OpenSource isVisible={isVisible.opensource} /> */}
+        <OpenSource isVisible={isVisible.opensource} />
         <Contact isVisible={isVisible.contact} />
       </main>
       
