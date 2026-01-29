@@ -1,5 +1,4 @@
 import React from 'react';
-import { Github } from 'lucide-react';
 import { openSourceContributions } from '../../../data/openSource';
 import './OpenSource.scss';
 
@@ -60,14 +59,10 @@ const OpenSource = ({ isVisible }) => {
                   </div>
                   
                   <div className="opensource__links">
-                    <a target="_blank" href={project.url} className="opensource__link">
+                    <a target="_blank" rel="noopener noreferrer" href={project.url} className="opensource__link">
                       <span className="opensource__npm-dot"></span>
                       Link
                     </a>
-                    {/* <a target="_blank" href={project.githubUrl} className="opensource__link">
-                      <Github size={16} />
-                      GitHub
-                    </a> */}
                   </div>
                 </div>
               </div>

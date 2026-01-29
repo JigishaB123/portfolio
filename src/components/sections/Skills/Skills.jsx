@@ -1,7 +1,5 @@
-import React, { useState } from 'react';
-import { User } from 'lucide-react';
+import React from 'react';
 import { skills } from '../../../data/skills';
-import SkillBadge from '../../ui/SkillBadge/SkillBadge';
 import './Skills.scss';
 import {
   FaReact,
@@ -14,7 +12,6 @@ import {
   FaBootstrap,
   FaAws,
   FaLinux,
-  FaCertificate,
   FaStar,
 } from 'react-icons/fa';
 import {

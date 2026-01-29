@@ -1,39 +1,9 @@
 import React, { useState } from 'react';
-import { User } from 'lucide-react';
 import { personalInfo } from '../../../data/personalInfo';
 import { skills } from '../../../data/skills';
-import SkillBadge from '../../ui/SkillBadge/SkillBadge';
 import './About.scss';
 
 const About = ({ isVisible }) => {
-  const [activeTab, setActiveTab] = useState('frontend');
-
-  const tabData = [
-    {
-      id: 'frontend',
-      label: 'Frontend tech',
-      skills: skills.frontend,
-      variant: 'primary'
-    },
-    {
-      id: 'backend',
-      label: 'Backend & DB',
-      skills: [...skills.backend, ...skills.databases],
-      variant: 'secondary'
-    },
-    {
-      id: 'cloud',
-      label: 'Cloud & Tools',
-      skills: [...skills.cloud, ...skills.tools],
-      variant: 'tertiary'
-    },
-    {
-      id: 'testing',
-      label: 'Testing Tools',
-      skills: skills.testing,
-      variant: 'primary'
-    }
-  ];
 
   return (
     <section id="about" className="about">

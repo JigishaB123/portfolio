@@ -1,5 +1,5 @@
 import React from 'react';
-import { Github, ExternalLink, Code } from 'lucide-react';
+import { Github } from 'lucide-react';
 import { projects } from '../../../data/projects';
 import './Projects.scss';
 
@@ -50,7 +50,7 @@ const Projects = ({ isVisible }) => {
             ))}
           </div>
 
-          <a className='projects__link' target='_blank' href='https://github.com/JigishaB123' style={{ paddingTop:'12px', color: '#3b82f6', textDecoration: 'underline' , fontSize: '18px'}}>
+          <a className='projects__link' target='_blank' rel="noopener noreferrer" href='https://github.com/JigishaB123' style={{ paddingTop:'12px', color: '#3b82f6', textDecoration: 'underline' , fontSize: '18px'}}>
           Know more...</a>
         </div>
       </div>
