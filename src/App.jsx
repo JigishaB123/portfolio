@@ -10,7 +10,6 @@ import Hero from './components/sections/Hero/Hero';
 import About from './components/sections/About/About';
 import Education from './components/sections/Education/Education';
 import Experience from './components/sections/Experience/Experience';
-import OpenSource from './components/sections/OpenSource/OpenSource';
 import Projects from './components/sections/Projects/Projects';
 import Contact from './components/sections/Contact/Contact';
 import Skills from './components/sections/Skills/Skills';
@@ -32,7 +31,7 @@ function App() {
         <Skills isVisible={isVisible.skills}/>
         <Experience isVisible={isVisible.experience} />
         <Projects isVisible={isVisible.projects} />
-        <OpenSource isVisible={isVisible.opensource} />
+        {/* <OpenSource isVisible={isVisible.opensource} /> */}
         <Contact isVisible={isVisible.contact} />
       </main>
       

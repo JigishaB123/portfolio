@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { personalInfo } from '../../../data/personalInfo';
-import { skills } from '../../../data/skills';
 import './About.scss';
 
 const About = ({ isVisible }) => {
