@@ -28,11 +28,11 @@ function App() {
       <main className="main-content">
         <Hero isVisible={isVisible.home} />
         <About isVisible={isVisible.about} />
-        <Skills isVisible={isVisible.skills}/>
         <Education isVisible={isVisible.education} />
+        <Skills isVisible={isVisible.skills}/>
         <Experience isVisible={isVisible.experience} />
-        <OpenSource isVisible={isVisible.opensource} />
         <Projects isVisible={isVisible.projects} />
+        {/* <OpenSource isVisible={isVisible.opensource} /> */}
         <Contact isVisible={isVisible.contact} />
       </main>
       

@@ -1,7 +1,7 @@
 export const education = [
     {
       id: 1,
-      degree: "Master's in Software Engineering Systems",
+      degree: "Master of Science in Software Engineering Systems",
       school: "Northeastern University",
       year: "2024-2026",
       gpa: "4.0/4.0",
@@ -14,7 +14,7 @@ export const education = [
     },
     {
       id: 2,
-      degree: "Bachelor of Computer Engineering",
+      degree: "B.E. in Computer Engineering",
       school: "Pune University",
       year: "2016-2020",
       gpa: "9.04/10.00",
