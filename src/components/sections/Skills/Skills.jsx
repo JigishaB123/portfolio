@@ -14,13 +14,6 @@ const Skills = ({ isVisible }) => {
         cloud: 'Cloud & DevOps',
         tools: 'Testing & Tools',
       };
-
-      // Default icon for skills without specific icons
-  const DefaultIcon = ({ skill }) => (
-    <div className="skills-row__skill-default-icon">
-      {skill.split(' ').map(word => word[0]).join('').toUpperCase().slice(0, 2)}
-    </div>
-  );
   
   return (
         <section id="skills" className="skills-minimal">
