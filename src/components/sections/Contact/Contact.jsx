@@ -1,46 +1,58 @@
 import React from 'react';
-import { Mail, Linkedin, Github, MessageCircle } from 'lucide-react';
+import { Mail, Linkedin, Github, MapPin } from 'lucide-react';
 import { personalInfo } from '../../../data/personalInfo';
 import './Contact.scss';
 
 const Contact = ({ isVisible }) => {
   return (
-    <section id="contact" className="contact">
-      <div className="contact__container">
-        <div className={`contact__content ${isVisible ? 'contact__content--visible' : 'contact__content--hidden'}`}>
-          <h2 className="contact__title">Let's Work Together</h2>
-          <p className="contact__description">
-            I'm always interested in new opportunities and exciting projects. 
-            Let's discuss how we can bring your ideas to life.
+    <section id="contact" className="contact-minimal">
+      <div className="contact-minimal__container">
+        <div className={`contact-minimal__content ${isVisible ? 'contact-minimal__content--visible' : 'contact-minimal__content--hidden'}`}>
+          <h2 className="contact-minimal__title">Let's Connect</h2>
+          <p className="contact-minimal__subtitle">
+            Open to Full Stack Engineer and Cloud computing opportunities.
           </p>
           
-          <div className="contact__grid">
-            <div className="contact__card">
-              <Mail className="contact__icon" size={32} />
-              <h3 className="contact__card-title">Email</h3>
-              <p className="contact__card-text">{personalInfo.email}</p>
+          <div className="contact-minimal__card">
+            <a 
+              href={`mailto:${personalInfo.email}`}
+              className="contact-minimal__email-btn"
+            >
+              <Mail size={20} />
+              {personalInfo.email}
+            </a>
+            
+            <div className="contact-minimal__divider">
+              <span>or find me on</span>
             </div>
             
-            <div className="contact__card">
-              <Linkedin className="contact__icon" size={32} />
-              <h3 className="contact__card-title">LinkedIn</h3>
-              <p className="contact__card-text">linkedin.com/in/jigishabhole</p>
+            <div className="contact-minimal__social-buttons">
+              <a 
+                href={personalInfo.social.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="contact-minimal__social-btn"
+              >
+                <Github size={18} />
+                GitHub
+              </a>
+              
+              <a 
+                href={personalInfo.social.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="contact-minimal__social-btn"
+              >
+                <Linkedin size={18} />
+                LinkedIn
+              </a>
             </div>
             
-            <div className="contact__card">
-              <Github className="contact__icon" size={32} />
-              <h3 className="contact__card-title">GitHub</h3>
-              <p className="contact__card-text">github.com/jigishaB123</p>
+            <div className="contact-minimal__location">
+              <MapPin size={16} />
+              {personalInfo.location}
             </div>
           </div>
-          
-          <a
-            href={`mailto:${personalInfo.email}`}
-            className="contact__button"
-          >
-            <MessageCircle size={20} />
-            Get In Touch
-          </a>
         </div>
       </div>
     </section>

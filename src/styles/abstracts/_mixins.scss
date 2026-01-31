@@ -40,6 +40,7 @@
     margin: 0 auto;
     padding-left: $spacing-4;
     padding-right: $spacing-4;
+    // background: linear-gradient(135deg, #f0f6fb 0%, #e8f1f8 100%);
   
     @include respond-to(lg) {
       padding-left: $spacing-8;
@@ -66,7 +67,7 @@
     background: linear-gradient($direction, $primary-blue, $secondary-purple);
   }
   
-  @mixin gradient-text($gradient: linear-gradient(45deg, $primary-blue, $secondary-purple)) {
+  @mixin gradient-text($gradient:#1a1a1a) {
     background: $gradient;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

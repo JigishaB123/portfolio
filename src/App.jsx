@@ -8,7 +8,6 @@ import Footer from './components/layout/Footer/Footer';
 // Section Components
 import Hero from './components/sections/Hero/Hero';
 import About from './components/sections/About/About';
-import Education from './components/sections/Education/Education';
 import Experience from './components/sections/Experience/Experience';
 import Projects from './components/sections/Projects/Projects';
 import Contact from './components/sections/Contact/Contact';
@@ -27,11 +26,9 @@ function App() {
       <main className="main-content">
         <Hero isVisible={isVisible.home} />
         <About isVisible={isVisible.about} />
-        <Education isVisible={isVisible.education} />
         <Skills isVisible={isVisible.skills}/>
         <Experience isVisible={isVisible.experience} />
         <Projects isVisible={isVisible.projects} />
-        {/* <OpenSource isVisible={isVisible.opensource} /> */}
         <Contact isVisible={isVisible.contact} />
       </main>
       

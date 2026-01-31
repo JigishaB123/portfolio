@@ -1,111 +1,164 @@
-@import '../../../styles/abstracts/variables';
-@import '../../../styles/abstracts/mixins';
+// Variables
+$white: #ffffff;
+$gray-900: #111827;
+$gray-700: #374151;
+$gray-600: #4b5563;
+$gray-500: #6b7280;
+$purple-100: #f3e8ff;
+$purple-50: #faf5ff;
 
+$mobile-breakpoint: 768px;
+$shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+// Navigation
 .navigation {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: $z-nav;
-  @include glass-morphism(0.9);
-  border-bottom: 1px solid $border-light;
-  box-shadow: $shadow-sm;
+  background: rgba(255, 255, 255, 0.95); // Semi-transparent white
+  backdrop-filter: blur(10px); // Frosted glass effect
+  border-radius: 9999px;
+  box-shadow: $shadow-lg;
+  max-width: 54rem;
+  margin: 0 auto;
+  position: fixed; // Changed from sticky to fixed
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%); // Center it horizontally
+  z-index: 1000;
+  width: calc(100% - 8rem); // Responsive width with margin
 
   &__container {
-    @include container;
+    width: 100%;
   }
 
   &__content {
-    @include flex-between;
-    padding: $spacing-4 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 2rem;
   }
 
   &__logo {
-    font-size: $font-2xl;
-    font-weight: $font-bold;
-    @include gradient-text;
+    flex: 1;
+    text-align: center;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: $gray-900;
   }
 
   &__desktop-nav {
     display: flex;
-    gap: $spacing-8;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      margin: 0;
+    }
   }
 
   &__nav-button {
-    padding: $spacing-2 0;
-    font-size: $font-base;
-    font-weight: $font-medium;
-    color: $text-secondary;
-    transition: $transition-colors;
+    font-size: 1rem;
+    font-weight: 500;
+    color: $gray-500;
     background: none;
     border: none;
     cursor: pointer;
+    transition: color 0.2s ease;
+    padding: 0.5rem 0.875rem;
 
     &:hover {
-      color: $primary-blue;
+      color: $gray-700;
     }
 
     &--active {
-      color: $primary-blue;
-      position: relative;
-
-      &::after {
-        content: '';
-        position: absolute;
-        bottom: -$spacing-1;
-        left: 0;
-        right: 0;
-        height: 2px;
-        @include gradient-primary;
-        border-radius: $radius-full;
-      }
+      color: $gray-900;
+      font-weight: 600;
     }
   }
 
   &__mobile-button {
-    padding: $spacing-2;
-    border-radius: $radius-lg;
-    color: $text-secondary;
+    color: $gray-700;
     background: none;
     border: none;
     cursor: pointer;
-    transition: $transition-colors;
+    transition: color 0.2s ease;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
 
     &:hover {
-      background-color: $background-secondary;
+      color: $gray-900;
     }
 
     &--active {
-      background-color: $background-secondary;
-      color: $primary-blue;
+      color: $gray-900;
     }
   }
 
   &__mobile-menu {
-    @include glass-morphism(0.98);
-    border-top: 1px solid $border-light;
-    padding: $spacing-2;
+    margin-top: 1rem;
+    background: $white;
+    border-radius: 1.5rem;
     box-shadow: $shadow-lg;
-    animation: slideDown $transition-fast;
+    max-width: 64rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1rem;
+    position: absolute;
+    left: 0;
+    right: 0;
   }
 
   &__mobile-nav-button {
-    display: block;
     width: 100%;
     text-align: left;
-    padding: $spacing-4 $spacing-6;
-    font-size: $font-base;
-    font-weight: $font-medium;
-    color: $text-secondary;
-    border-radius: $radius-lg;
-    transition: $transition-all;
+    padding: 1rem 1.5rem;
+    border-radius: 1rem;
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: $gray-500;
     background: none;
     border: none;
     cursor: pointer;
+    transition: all 0.2s ease;
+    display: block;
 
     &:hover {
-      color: $primary-blue;
-      background-color: $background-secondary;
+      background: $purple-50;
+      color: $gray-700;
+    }
+
+    &--active {
+      background: $purple-100;
+      color: $gray-900;
+      font-weight: 600;
+    }
+  }
+}
+
+// Responsive
+@media (max-width: $mobile-breakpoint) {
+  .navigation {
+    margin: 1rem;
+    top: 1rem;
+    &__desktop-nav {
+      display: none;
+    }
+
+    &__content {
+      padding: 0.625rem 1.25rem;
+    }
+  }
+}
+
+@media (min-width: 769px) {
+  .navigation {
+    &__logo,
+    &__mobile-button,
+    &__mobile-menu {
+      display: none;
     }
   }
 }

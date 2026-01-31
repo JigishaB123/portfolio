@@ -17,48 +17,27 @@ const About = ({ isVisible }) => {
                   {paragraph}
                 </p>
               ))}
-              
-              {/* <div className="about__skills">
-                <h3 className="about__skills-title">Technologies & Skills</h3>
-                
-                {/* Tab Navigation 
-                <div className="about__tabs">
-                  <div className="about__tab-nav">
-                    {tabData.map((tab) => (
-                      <button
-                        key={tab.id}
-                        className={`about__tab-button ${activeTab === tab.id ? 'about__tab-button--active' : ''}`}
-                        onClick={() => setActiveTab(tab.id)}
-                      >
-                        {tab.label}
-                      </button>
-                    ))}
-                  </div>
-                  
-                  {/* Tab Content 
-                  <div className="about__tab-content">
-                    {tabData.map((tab) => (
-                      <div
-                        key={tab.id}
-                        className={`about__tab-panel ${activeTab === tab.id ? 'about__tab-panel--active' : ''}`}
-                      >
-                        <div className="about__skill-grid">
-                          {tab.skills.map((skill, index) => (
-                            <SkillBadge key={index} skill={skill} variant={tab.variant} />
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div> */}
             </div> 
             
-            <div className="about__image">
-              <div className="about__profile-image">
-                <img src="images/profile.webp" alt="profile"></img>
+          <div className="about__highlights">
+            <div className="about__highlight-card">
+              <div className="about__highlight-badge about__highlight-badge--education">
+                🎓 EDUCATION
               </div>
+              <h3 className="about__highlight-title">MS in Software Engineering Systems</h3>
+              <p className="about__highlight-subtitle">Northeastern University • 2024-2026</p>
             </div>
+
+            <div className="about__highlight-card">
+              <div className="about__highlight-badge about__highlight-badge--opensource">
+                🌱 OPEN SOURCE CONTRIBUTION
+              </div>
+              <h3 className="about__highlight-title">NPM Package</h3>
+              <a href="https://www.npmjs.com/package/cards-key-point-indicator" className="about__highlight-subtitle">
+                cards-key-point-indicator
+              </a>
+            </div>
+          </div>
           </div>
         </div>
       </div>

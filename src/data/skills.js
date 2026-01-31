@@ -1,25 +1,22 @@
 export const skills = {
     frontend: [
-      "React", "Next.js", "Redux", "JavaScript", "TypeScript", "HTML5", "CSS3",
-      "Bootstrap", "D3.js"
+      "React", "Redux", "Angular", "HTML5", "SASS", "D3.js"
     ],
     
     backend: [
-      "Java", "Python", "Node.js", "Express.js", 
-     "Spring Boot", "Shell Scripting", "REST API", "Microservices"
+      "Spring Boot", "Node.js", "Express.js", "REST APIs",  "Microservices", "SOAP", "Kafka"
     ],
     
     databases: [
-      "MySQL", "Oracle", "MongoDB", "PostgreSQL", "JSON", "XML", 
+      "MySQL", "Oracle", "MongoDB", "PostgreSQL", "JSON", "XML"
     ],
     cloud: [
-      "Amazon Web Services", "GCP", "GitHub Actions", "Terraform", "Packer"
+      "Amazon Web Services", "Terraform", "CloudFormation", "Packer", "Docker", "CI/CD"
     ],
     tools: [
-      "GitHub", "ElasticSearch", "Message Queues", "IBM MQ", "Postman", "JUnit", "Mockito", "Jest", 
-      "Webpack", "Linux", "Object Oriented Design(OOD)", "Design Patterns", "Data Structures"
+      "Jest", "JUnit", "Mockito", "ElasticSearch", "Message Queues", "IBM MQ", "Postman", "Gradle", "Linux"
     ],
-    certifications: [
-      "Azure AZ-900 Fundamentals", "NPTEL Elite Database Management System", "NPM-cards-key-point-indicator"
+    programming: [
+      "Java", "Python", "JavaScript", "TypeScript", "Shell Scripting"
     ]
   };

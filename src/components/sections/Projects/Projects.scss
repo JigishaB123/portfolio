@@ -1,12 +1,40 @@
 @import '../../../styles/abstracts/variables';
 @import '../../../styles/abstracts/mixins';
 
-.projects {
-  padding: $spacing-20 $spacing-4;
-  background-color: $background-secondary;
+.projects-modern {
+  padding: $spacing-2 $spacing-4;
+  position: relative;
+  overflow: hidden;
+
+  // Decorative background elements
+  &::before {
+    content: '';
+    position: absolute;
+    top: -10%;
+    right: -5%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(52, 152, 219, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -10%;
+    left: -5%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(142, 68, 173, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
   &__container {
     @include container;
-    
+    position: relative;
+    z-index: 1;
   }
 
   &__content {
@@ -23,85 +51,409 @@
     }
   }
 
+  &__header {
+    text-align: center;
+    margin-bottom: $spacing-12;
+  }
+
   &__title {
+    font-size: 3rem;
+    font-weight: 800;
     @include section-title;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: $spacing-3;
+    
+    @include respond-below(md) {
+      font-size: 2.5rem;
+    }
+    
+    @include respond-below(sm) {
+      font-size: 2rem;
+    }
+  }
+
+  &__subtitle {
+    font-size: $font-lg;
+    color: $text-secondary;
+    max-width: 600px;
+    margin: 0 auto;
+    
+    @include respond-below(sm) {
+      font-size: $font-base;
+    }
+  }
+
+  &__carousel-wrapper {
+    display: flex;
+    align-items: center;
+    gap: $spacing-6;
+    margin-bottom: $spacing-8;
+    
+    @include respond-below(lg) {
+      gap: $spacing-4;
+    }
+    
+    @include respond-below(md) {
+      gap: $spacing-3;
+    }
   }
 
   &__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: $spacing-8;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $spacing-6;
+    width: 100%;
+    
+    @include respond-below(md) {
+      grid-template-columns: 1fr;
+      gap: $spacing-4;
+    }
   }
 
   &__card {
-    @include card-base;
+    background: white;
+    border-radius: 20px;
     overflow: hidden;
-
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    
     &:hover {
-      border-color: $primary-blue;
-      transform: translateY(-4px);
-      box-shadow: $shadow-xl;
+      transform: translateY(-12px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(52, 152, 219, 0.2);
+    }
+  }
+
+  &__image-container {
+    position: relative;
+    height: 240px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    
+    @include respond-below(sm) {
+      height: 200px;
     }
   }
 
   &__image {
-    height: 12rem;
-    background: linear-gradient(135deg, rgba($primary-blue, 0.1), rgba($secondary-purple, 0.1));
-    @include flex-center;
-    color: $text-muted;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+    
+    .projects-modern__card:hover & {
+      transform: scale(1.1);
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.3) 100%);
+    display: flex;
+    align-items: flex-end;
+    padding: $spacing-4;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    
+    .projects-modern__card:hover & {
+      opacity: 1;
+    }
+  }
+
+  &__year-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-1;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: $spacing-1 $spacing-3;
+    border-radius: 20px;
+    font-size: 0.813rem;
+    font-weight: 600;
+    color: #3498db;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
 
   &__card-content {
     padding: $spacing-6;
+    
+    @include respond-below(sm) {
+      padding: $spacing-4;
+    }
   }
 
   &__card-title {
-    font-size: $font-xl;
-    font-weight: $font-semibold;
+    font-size: 1.5rem;
+    font-weight: 700;
     color: $text-primary;
     margin-bottom: $spacing-3;
+    line-height: 1.3;
+    
+    @include respond-below(sm) {
+      font-size: 1.25rem;
+    }
   }
 
-  &__card-description {
+  &__description {
     color: $text-secondary;
-    font-size: $font-sm;
+    font-size: 0.938rem;
+    line-height: 1.7;
     margin-bottom: $spacing-4;
-    line-height: $leading-normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    
+    @include respond-below(sm) {
+      font-size: 0.875rem;
+      -webkit-line-clamp: 2;
+    }
   }
 
-  &__tech-tags {
+  &__tech-stack {
     display: flex;
     flex-wrap: wrap;
     gap: $spacing-2;
     margin-bottom: $spacing-4;
   }
 
-  &__tech-tag {
+  &__tech-badge {
     padding: $spacing-1 $spacing-3;
-    background-color: $background-tertiary;
-    border: 1px solid $border-light;
-    border-radius: $radius-full;
-    color: $text-secondary;
-    font-size: $font-xs;
-    font-weight: $font-medium;
+    background: rgba(52, 152, 219, 0.15);
+    color: #2980b9;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    }
+
+    &--more {
+      background: rgba(52, 152, 219, 0.15);
+    }
+    
+    @include respond-below(sm) {
+      padding: 6px $spacing-2;
+      font-size: 0.688rem;
+    }
   }
 
-  &__links {
+  &__actions {
     display: flex;
-    gap: $spacing-4;
+    gap: $spacing-3;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    
+    &--visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    @include respond-below(sm) {
+      flex-direction: column;
+      gap: $spacing-2;
+    }
   }
 
-  &__link {
+  &__action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-2;
+    padding: $spacing-2 $spacing-4;
+    border-radius: 25px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    flex: 1;
+    justify-content: center;
+    
+    &--primary {
+      background: rgba(52, 152, 219, 0.15);
+      color: white;
+      box-shadow: 0 4px 15px rgba(52, 152, 219, 0.15);
+      
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(52, 152, 219, 0.15);
+      }
+    }
+
+    &--secondary {
+      background: white;
+      color: #667eea;
+      border: 2px solid #667eea;
+      
+      &:hover {
+        background: #667eea;
+        color: white;
+        transform: translateY(-2px);
+      }
+    }
+    
+    @include respond-below(sm) {
+      padding: $spacing-2 $spacing-3;
+      font-size: 0.813rem;
+    }
+  }
+
+  &__nav {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: none;
+    background: white;
+    color: #2980b9;
     display: flex;
     align-items: center;
-    gap: $spacing-1;
-    color: $text-secondary;
-    text-decoration: none;
-    font-size: $font-sm;
-    transition: $transition-colors;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    
+    &:hover:not(:disabled) {
+      background: linear-gradient(135deg, #5aade9 0%, #1a43ea 100%);
+      color: white;
+      transform: scale(1.1);
+      box-shadow: 0 6px 25px rgba(102, 126, 234, 0.4);
+    }
+    
+    &:active:not(:disabled) {
+      transform: scale(0.95);
+    }
+    
+    &:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+    
+    @include respond-below(md) {
+      width: 48px;
+      height: 48px;
+      
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
 
+  &__dots {
+    display: flex;
+    justify-content: center;
+    gap: $spacing-3;
+    margin-bottom: $spacing-8;
+  }
+
+  &__dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: none;
+    background: #d1d5db;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+    
+    &--active {
+      background: rgba(40, 146, 216, 0.15);
+      width: 40px;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(52, 152, 219, 0.15);
+    }
+    
+    &:hover:not(&--active) {
+      background: #9ca3af;
+      transform: scale(1.3);
+    }
+  }
+
+  &__footer {
+    text-align: center;
+    margin-top: $spacing-4;
+  }
+
+  &__view-all {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-2;
+    padding: $spacing-3 $spacing-6;
+    background: #3498db;
+    color: white;
+    text-decoration: none;
+    font-size: $font-lg;
+    font-weight: 600;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    
     &:hover {
-      color: $primary-blue;
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(52, 168, 134, 0.3);
+    }
+    
+    @include respond-below(sm) {
+      padding: $spacing-2 $spacing-4;
+      font-size: $font-base;
+    }
+  }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  .projects-modern {
+    &__content,
+    &__card,
+    &__image,
+    &__actions,
+    &__action-btn,
+    &__nav {
+      transition: none;
+    }
+    
+    &__card:hover,
+    &__action-btn:hover,
+    &__nav:hover {
+      transform: none;
+    }
+  }
+}
+
+// Print styles
+@media print {
+  .projects-modern {
+    background: white;
+    
+    &::before,
+    &::after {
+      display: none;
+    }
+    
+    &__card {
+      box-shadow: none;
+      border: 1px solid #e5e7eb;
+      page-break-inside: avoid;
+    }
+    
+    &__nav,
+    &__dots,
+    &__actions,
+    &__footer {
+      display: none;
     }
   }
 }

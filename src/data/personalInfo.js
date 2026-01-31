@@ -1,7 +1,7 @@
 export const personalInfo = {
     name: "Jigisha Bhole",
-    title: "Full Stack Developer",
-    subtitle: "Full-stack developer passionate about building scalable systems and seamless user experiences",
+    title: "Software Engineer | Master's Student",
+    subtitle: "Software Engineer with 3+ years of experience building scalable systems",
     email: "bhole.j@northeastern.edu",
     location: "Boston, MA",
     
@@ -11,9 +11,8 @@ export const personalInfo = {
     },
     
     bio: [
-      "A passionate Software Engineer with over 3 years of experience building scalable, high-performance applications. I have a strong foundation in Java, Spring Boot, Microservices, and Full Stack Development, and I'm currently pursuing my Master’s in Software Engineering Systems at Northeastern University, where I continue to deepen my skills and broaden my technical expertise.",
-      "At Finastra, I contributed to complex financial systems, working on end-to-end payment workflows, optimizing system performance, and collaborating directly with clients to deliver robust, enterprise-grade solutions. My experience spans backend development, RESTful APIs, and database design, along with frontend technologies like React and Angular. I’m also well-versed in cloud services (AWS), CI/CD pipelines, and infrastructure automation using tools like Terraform.",
-      "Whether it's streamlining backend logic, crafting intuitive user interfaces, or automating infrastructure, I thrive on solving real-world problems through clean, maintainable code—and enjoy working with cross-functional teams to build impactful software.",
+      "I’m a software engineer with 3 years of professional experience building scalable, high-performance applications in the financial and cloud domains. I’ve worked extensively with Java, Spring Boot, microservices, REST APIs, SQL, and modern frontend frameworks, contributing to large production codebases where reliability and performance truly matter. From optimizing payment workflows to improving system throughput and reducing processing times, I enjoy solving complex problems that have real-world impact.",
+      "Beyond work, I’m passionate about clean architecture, well-tested code, and systems that scale gracefully. During my master’s studies, I expanded my skill set into full-stack and cloud-native development, building end-to-end applications on AWS and experimenting with data visualization and automation. I thrive in collaborative environments, love turning ideas into production-ready features, and I’m always excited by opportunities to learn, build, and push software to the next level.",
       "Let’s build something great together!"
     ]
   };

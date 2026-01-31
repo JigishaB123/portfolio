@@ -1,63 +1,75 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { scrollToSection } from '../../../utils/scrollToSection';
-import useResponsive from '../../../hooks/useResponsive';
-import { classNames } from '../../../utils/helpers';
 import './Navigation.scss';
 
-const Navigation = ({ activeSection }) => {
+const Navigation = () => {
+  const [activeSection, setActiveSection] = useState('Home');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { isMobile } = useResponsive();
+  const [isMobile, setIsMobile] = useState(false);
 
   const navItems = [
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About' },
-    { id: 'education', label: 'Education' },
     { id: 'skills', label: 'Skills' },
     { id: 'experience', label: 'Experience' },
-    { id: 'opensource', label: 'Publications' },
     { id: 'projects', label: 'Projects' },
     { id: 'contact', label: 'Contact' }
   ];
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const handleNavClick = (sectionId) => {
-    scrollToSection(sectionId);
+    setActiveSection(sectionId);
     setIsMenuOpen(false);
+    
+    // Scroll to section
+    scrollToSection(sectionId);
   };
 
   return (
     <nav className="navigation">
       <div className="navigation__container">
         <div className="navigation__content">
-          <div className="navigation__logo"></div>
-          
           {!isMobile && (
-            <div className="navigation__desktop-nav">
+            <ul className="navigation__desktop-nav">
               {navItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => handleNavClick(item.id)}
-                  className={classNames(
-                    'navigation__nav-button',
-                    activeSection === item.id && 'navigation__nav-button--active'
-                  )}
-                >
-                  {item.label}
-                </button>
+                <li key={item.id}>
+                  <button
+                    onClick={() => handleNavClick(item.id)}
+                    className={`navigation__nav-button ${
+                      activeSection === item.id ? 'navigation__nav-button--active' : ''
+                    }`}
+                  >
+                    {item.label}
+                  </button>
+                </li>
               ))}
-            </div>
+            </ul>
           )}
 
           {isMobile && (
-            <button
-              className={classNames(
-                'navigation__mobile-button',
-                isMenuOpen && 'navigation__mobile-button--active'
-              )}
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+            <>
+              <div className="navigation__logo">
+                {navItems.find(item => item.id === activeSection)?.label || 'Menu'}
+              </div>
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className={`navigation__mobile-button ${
+                  isMenuOpen ? 'navigation__mobile-button--active' : ''
+                }`}
+              >
+                {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
+            </>
           )}
         </div>
       </div>
@@ -68,7 +80,9 @@ const Navigation = ({ activeSection }) => {
             <button
               key={item.id}
               onClick={() => handleNavClick(item.id)}
-              className="navigation__mobile-nav-button"
+              className={`navigation__mobile-nav-button ${
+                activeSection === item.id ? 'navigation__mobile-nav-button--active' : ''
+              }`}
             >
               {item.label}
             </button>

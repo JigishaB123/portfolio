@@ -4,40 +4,30 @@ import './Experience.scss';
 
 const Experience = ({ isVisible }) => {
   return (
-    <section id="experience" className="experience">
-      <div className="experience__container">
-        <div className={`experience__content ${isVisible ? 'experience__content--visible' : 'experience__content--hidden'}`}>
-          <h2 className="experience__title">Work Experience</h2>
+    <section id="experience" className="experience-modern">
+      <div className="experience-modern__container">
+        <div className={`experience-modern__content ${isVisible ? 'experience-modern__content--visible' : 'experience-modern__content--hidden'}`}>
+          <h2 className="experience-modern__title">Professional Experience</h2>
           
-          <div className="experience__list">
+          <div className="experience-modern__list">
             {experience.map((job) => (
-              <div key={job.id} className="experience__card">
-                <div className="experience__card-header">
-                  <div>
-                    <h3 className="experience__card-title">{job.title}</h3>
-                    <p className="experience__company-name">{job.company}</p>
-                    <p className="experience__card-location">{job.location}</p>
-                  </div>
-                  <span className="experience__period">{job.period}</span>
+              <div key={job.id} className="experience-modern__card">
+                <div className="experience-modern__left">
+                  <span className="experience-modern__period">{job.period}</span>
+                  <h3 className="experience-modern__company">{job.company}</h3>
+                  <p className="experience-modern__title-role">{job.title}</p>
                 </div>
                 
-                <ul className="experience__responsibilities">
-                  {job.responsibilities.map((responsibility, index) => (
-                    <li key={index} className="experience__responsibility-item">
-                      {responsibility}
-                    </li>
-                  ))}
-                </ul>
+                <div className="experience-modern__divider"></div>
                 
-                <div>
-                  <p className="experience__card-label">Technologies Used:</p>
-                  <div className="experience__tech-tags">
-                    {job.tech.map((tech, index) => (
-                      <span key={index} className="experience__tech-tag">
-                        {tech}
-                      </span>
+                <div className="experience-modern__right">
+                  <ul className="experience-modern__responsibilities">
+                    {job.responsibilities.map((responsibility, index) => (
+                      <li key={index} className="experience-modern__responsibility-item">
+                        {responsibility}
+                      </li>
                     ))}
-                  </div>
+                  </ul>
                 </div>
               </div>
             ))}
