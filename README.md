@@ -2,7 +2,7 @@
 
 A responsive, single-page portfolio built with React 19 and SCSS. Showcases professional experience, projects, skills, and open-source contributions.
 
-**Live site:** [jigishabhole.dev](https://jigishabhole.dev) <!-- update if different -->
+**Live site:** [jigishabhole.dev](https://portfolio-website-jigisha-bholes-projects.vercel.app/)
 
 ---
 
@@ -89,7 +89,3 @@ All content lives in `src/data/` — no component edits needed for content updat
 | `openSource.js` | Published packages and contributions |
 
 ---
-
-## License
-
-MIT
