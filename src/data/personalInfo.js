@@ -1,7 +1,7 @@
 export const personalInfo = {
     name: "Jigisha Bhole",
     title: "Software Engineer | Master's Student",
-    subtitle: "Software Engineer with 3+ years of experience building scalable systems",
+    subtitle: "Full-Stack & Cloud Engineer · Java · Python · React · AWS · Turning ideas into production-ready software",
     email: "bhole.j@northeastern.edu",
     location: "Boston, MA",
     

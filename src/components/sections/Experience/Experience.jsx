@@ -7,7 +7,7 @@ const Experience = ({ isVisible }) => {
     <section id="experience" className="experience-modern">
       <div className="experience-modern__container">
         <div className={`experience-modern__content ${isVisible ? 'experience-modern__content--visible' : 'experience-modern__content--hidden'}`}>
-          <h2 className="experience-modern__title">Professional Experience</h2>
+          <h2 className="experience-modern__title">Work Experience</h2>
           
           <div className="experience-modern__list">
             {experience.map((job) => (

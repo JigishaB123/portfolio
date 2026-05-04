@@ -1,6 +1,26 @@
 export const projects = [
     {
       id: 1,
+      title: "CareerForge",
+      image: "/images/careerforge-banner.png",
+      description: [
+        "Built a Java Swing career portal connecting students and companies, implementing 8 Gang-of-Four design patterns"
+      ],
+      tech: ["Java 17", "Swing", "Design Patterns", "Maven"],
+      year: "2026"
+    },
+    {
+      id: 2,
+      title: "ReplateAI",
+      image: "/images/replateai.png",
+      description: [
+        "Built a full-stack mobile app with a React Native frontend, Node.js REST API, and Python FastAPI microservice — uses GPT-4.1-mini vision to identify fridge ingredients from photos and generates personalized recipes with in-app Walmart grocery ordering for missing items"
+      ],
+      tech: ["React Native", "Expo", "Node.js", "Python", "FastAPI", "Firebase", "AWS S3", "OpenAI"],
+      year: "2025"
+    },
+    {
+      id: 3,
       title: "CloudFileVault: Cloud Native Application",
       image: "/images/CloudFileVault-1.png",
       description: [
@@ -12,7 +32,7 @@ export const projects = [
       year: "2025"
     },
     {
-      id: 2,
+      id: 4,
       title: "BudgetBuddy",
       image: "/images/tracker.png",
       description: [
@@ -23,7 +43,7 @@ export const projects = [
       year: "2024"
     },
     {
-      id: 3,
+      id: 5,
       title: "Finance Management System",
       image: "/images/finance.jpg",
       description: [
