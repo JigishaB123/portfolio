@@ -52,8 +52,6 @@ portfolio/
 | **Skills** | Categorized by domain — Frontend, Backend, Databases, Cloud, Tools, Languages |
 | **Experience** | 3 professional roles with responsibilities |
 | **Projects** | 5 featured projects with tech stacks and links |
-| **Education** | MS @ Northeastern University, BE @ Pune University |
-| **Open Source** | Published packages and community contributions |
 | **Contact** | Email and social links |
 
 ---
@@ -66,12 +64,6 @@ npm install
 
 # Start development server
 npm start
-
-# Production build
-npm run build
-
-# Run tests
-npm test
 ```
 ---
 
