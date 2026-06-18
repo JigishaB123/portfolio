@@ -341,14 +341,9 @@
       cursor: not-allowed;
     }
     
+    // Hide prev/next buttons on mobile — swipe is used instead
     @include respond-below(md) {
-      width: 48px;
-      height: 48px;
-      
-      svg {
-        width: 20px;
-        height: 20px;
-      }
+      display: none;
     }
   }
 

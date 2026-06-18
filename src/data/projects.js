@@ -17,7 +17,7 @@ export const projects = [
         "Built a full-stack mobile app with a React Native frontend, Node.js REST API, and Python FastAPI microservice — uses GPT-4.1-mini vision to identify fridge ingredients from photos and generates personalized recipes with in-app Walmart grocery ordering for missing items"
       ],
       tech: ["React Native", "Expo", "Node.js", "Python", "FastAPI", "Firebase", "AWS S3", "OpenAI"],
-      year: "2025"
+      year: "2026"
     },
     {
       id: 3,

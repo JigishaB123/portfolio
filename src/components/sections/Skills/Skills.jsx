@@ -7,11 +7,12 @@ const Skills = ({ isVisible }) => {
 
       // Category titles
       const categoryTitles = {
-        programming: 'Programming Languages',
-        frontend: 'Frontend Development',
+        programming: 'Languages',
         backend: 'Backend Development',
+        frontend: 'Frontend Development',
         databases: 'Databases',
         cloud: 'Cloud & DevOps',
+        ai: 'AI / Developer Tools',
         tools: 'Testing & Tools',
       };
   

@@ -6,11 +6,11 @@ export const experience = [
       period: "Sep 2025 - Dec 2025",
       location: "USA",
       responsibilities: [
-        "Designed and owned a SOC 2–compliant, cloud-native audit logging service on AWS (Python), ingesting and processing high-volume, low-latency logs from distributed microservices",
-        "Built a scalable AWS data pipeline using Lambda, Step Functions, Glue, and S3 to transform raw events into Parquet datasets for analytics, compliance audits, and traceability",
-        "Developed Python-based AI agent prototypes for incident management using LLM orchestration and structured prompts to automate fault detection, root cause analysis, and mitigation across distributed services"
+        "Architected a serverless AWS pipeline (Lambda, SNS/SQS, S3) ingesting 10,000+ daily events across distributed microservices, automating ETL and reducing manual processing by 80%",
+        "Built a multi-agent SRE system using CrewAI with detection, diagnosis, and mitigation agents, handling 10–20 fault scenarios in live cloud environments",
+        "Implemented an NL2Kubectl layer with Llama 3:8B for Kubernetes remediation with guardrails, achieving 70–85% SRE mitigation success rate"
       ],
-      tech: ["Python", "Amazon Web Services(Lambda, ECS, Step Functions, S3)", "CloudFirmation", "CI/CD"]
+      tech: ["Python", "Amazon Web Services(Lambda, ECS, Step Functions, S3)", "CloudFormation", "CI/CD"]
     },
     {
       id: 2,
@@ -19,10 +19,10 @@ export const experience = [
       period: "Aug 2023 - Feb 2024",
       location: "India",
       responsibilities: [
-        "Developed and optimized 8+ Java/Spring Boot payment workflows in a distributed microservices architecture, ensuring CHIPS and Federal Reserve compliance while improving transaction efficiency and reliability at high volumes",
-        "Led ISO 20022 migration for Fed payments by designing new data schemas, adding mandatory payment fields, and implementing workflow logic to ensure seamless processing and system consistency",
-        "Modernized a monolithic payment system into scalable microservices using Kafka-based event-driven architecture, enabling real-time mass payments and reducing batch wait times and processing delays by 35–50%",
-        "Collaborated with product, client stakeholders, and operations teams to diagnose and resolve high-severity production issues"
+        "Developed end-to-end Java/Spring Boot payment workflows with MQ-based routing, processing 5M+ daily transactions at sub-millisecond latency",
+        "Migrated a legacy batch payment processor to an event-driven Kafka microservices architecture, eliminating end-of-day batch delays",
+        "Built full-stack liquidity dashboards in Angular and Spring Boot with role-based access control for real-time fund position visibility",
+        "Optimized SQL stored procedures via query restructuring and partitioning, reducing execution time by 80% and unblocking a high-priority client delivery"
       ],
       tech: ["Java", "SpringBoot", "Microservices", "Kafka", "IBM MQ", "JUnit", "SQL"]
     },
@@ -33,10 +33,9 @@ export const experience = [
       period: "Aug 2020 - Aug 2023",
       location: "India",
       responsibilities: [
-        "Led and mentored a team of 6 developers through code reviews, technical guidance, and issue resolution, improving delivery quality and development consistency",
-        "Maintained and optimized large-scale Java and Angular based financial systems handling high-volume transactional data, ensuring reliability and performance in production environments",
-        "Designed and maintained client-specific product workflows, collaborating with stakeholders to deliver reliable production features while managing builds with Git and Gradle in an Agile environment",
-        "Optimized SQL queries and stored procedures over multi-million row datasets to support real-time liquidity monitoring and operational dashboards"
+        "Optimized Spring Boot microservices and Oracle SQL across 25M+ records, reducing response time by 45% via index restructuring and service-level caching",
+        "Led root cause analysis on production incidents across distributed services, reducing recurring defects by 40% and cutting on-call escalation volume",
+        "Automated CI/CD pipelines with Jenkins and Git, enabling zero-downtime deployments across multiple client environments",
       ],
       tech: ["Java", "SpringBoot", "Angular", "SQL"]
     }

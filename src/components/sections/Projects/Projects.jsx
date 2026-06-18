@@ -32,6 +32,30 @@ const Projects = ({ isVisible }) => {
     setCurrentIndex((prev) => Math.max(prev - 1, 0));
   };
 
+  // Swipe support for touch devices (mobile)
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (touchStart === null || touchEnd === null) return;
+    const distance = touchStart - touchEnd;
+    if (distance > minSwipeDistance) {
+      nextProjects();
+    } else if (distance < -minSwipeDistance) {
+      prevProjects();
+    }
+  };
+
   const visibleProjects = projects.slice(currentIndex, currentIndex + cardsPerView);
 
   return (
@@ -55,7 +79,12 @@ const Projects = ({ isVisible }) => {
               <ChevronLeft size={24} />
             </button>
 
-            <div className="projects-modern__grid">
+            <div
+              className="projects-modern__grid"
+              onTouchStart={onTouchStart}
+              onTouchMove={onTouchMove}
+              onTouchEnd={onTouchEnd}
+            >
               {visibleProjects.map((project) => (
                 <div 
                   key={project.id} 

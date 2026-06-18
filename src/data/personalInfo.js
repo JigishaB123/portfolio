@@ -1,8 +1,8 @@
 export const personalInfo = {
     name: "Jigisha Bhole",
-    title: "Software Engineer | Master's Student",
-    subtitle: "Full-Stack & Cloud Engineer · Java · Python · React · AWS · Turning ideas into production-ready software",
-    email: "bhole.j@northeastern.edu",
+    title: "Open to full-time Software Engineering roles - Aug 2026",
+    subtitle: "I'm passionate about building distributed systems, cloud-native infrastructure, and AI-powered solutions that create real-world impact.",
+    email: "bholejigisha97@gmail.com",
     location: "Boston, MA",
     
     social: {
@@ -11,8 +11,7 @@ export const personalInfo = {
     },
     
     bio: [
-      "I’m a software engineer with 3 years of professional experience building scalable, high-performance applications in the financial and cloud domains. I’ve worked extensively with Java, Spring Boot, microservices, REST APIs, SQL, and modern frontend frameworks, contributing to large production codebases where reliability and performance truly matter. From optimizing payment workflows to improving system throughput and reducing processing times, I enjoy solving complex problems that have real-world impact.",
-      "Beyond work, I’m passionate about clean architecture, well-tested code, and systems that scale gracefully. During my master’s studies, I expanded my skill set into full-stack and cloud-native development, building end-to-end applications on AWS and experimenting with data visualization and automation. I thrive in collaborative environments, love turning ideas into production-ready features, and I’m always excited by opportunities to learn, build, and push software to the next level.",
-      "Let’s build something great together!"
+      "I’m a software engineer with 3+ years of experience building distributed systems, high-throughput payment microservices, and cloud-native serverless pipelines and more recently, LLM-powered agent systems. My foundation is strong backend work in Java and Spring Boot, paired with hands-on AWS infrastructure and a growing edge in AI-driven solutions.",
+      "I care about clean architecture, well-tested code, and systems that scale gracefully. Currently finishing my MS at Northeastern, I’m ready to build things that scale and matter."
     ]
   };
