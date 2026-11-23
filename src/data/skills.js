@@ -1,6 +1,6 @@
 export const skills = {
     programming: [
-      "Java", "JavaScript", "TypeScript", "Python", "Bash/Shell"
+      "Java", "Python", "JavaScript", "TypeScript", "SQL", "Bash/Shell"
     ],
 
     backend: [
@@ -20,9 +20,9 @@ export const skills = {
     ],
 
     ai: [
-      "LLM Agent Orchestration", "Scikit-learn", "GitHub Copilot", "Claude Code", "Windsurf"
+      "LLM Agent Orchestration", "LLM agents", "CrewAI", "prompt engineering", "agent guardrails"
     ],
-
+    
     tools: [
       "Jest", "JUnit", "Mockito", "PyTest", "Gradle", "Elasticsearch"
     ]

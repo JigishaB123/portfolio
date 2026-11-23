@@ -1,32 +1,45 @@
 import { useState, useEffect } from 'react';
 
-const useScrollAnimation = (threshold = 0.3) => {
+/**
+ * - Tracks which <section id="..."> is in the middle of the viewport (for nav highlighting).
+ * - Adds the "in" class to every `.reveal` element the first time it scrolls into view.
+ */
+const useScrollAnimation = () => {
   const [activeSection, setActiveSection] = useState('home');
-  const [isVisible, setIsVisible] = useState({});
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
+    const sectionObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible(prev => ({ 
-              ...prev, 
-              [entry.target.id]: true 
-            }));
-            setActiveSection(entry.target.id);
-          }
+          if (entry.isIntersecting) setActiveSection(entry.target.id);
         });
       },
-      { threshold }
+      { rootMargin: '-45% 0px -50% 0px' }
     );
+    document.querySelectorAll('section[id]').forEach((s) => sectionObserver.observe(s));
 
-    const sections = document.querySelectorAll('section[id]');
-    sections.forEach((section) => observer.observe(section));
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('in');
+          revealObserver.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.15 }
+    );
+    document.querySelectorAll('.reveal').forEach((el, i) => {
+      el.style.transitionDelay = `${(i % 4) * 60}ms`;
+      revealObserver.observe(el);
+    });
 
-    return () => observer.disconnect();
-  }, [threshold]);
+    return () => {
+      sectionObserver.disconnect();
+      revealObserver.disconnect();
+    };
+  }, []);
 
-  return { activeSection, isVisible };
+  return { activeSection };
 };
 
 export default useScrollAnimation;

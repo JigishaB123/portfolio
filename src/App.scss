@@ -1,5 +1,28 @@
 @import './styles/main.scss';
 
+// ===========================
+// THEME
+// ===========================
+:root {
+  --bg: #08090b;
+  --bg-2: #0d0f12;
+  --surface: #111318;
+  --surface-2: #161920;
+  --border: rgba(255, 255, 255, 0.07);
+  --border-strong: rgba(255, 255, 255, 0.14);
+  --text: #e9ebef;
+  --text-2: #a3a9b4;
+  --text-3: #6b7280;
+  --accent: #5eead4;
+  --accent-2: #818cf8;
+  --accent-dim: rgba(94, 234, 212, 0.12);
+  --radius: 14px;
+  --mono: #{$font-mono};
+  --sans: #{$font-sans};
+  --max: 1180px;
+  --nav-h: 64px;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -7,96 +30,221 @@
 }
 
 html {
-  background: linear-gradient(135deg, $gray-50 0%, $gray-200 50%, $gray-100 100%);
-  min-height: 100vh;
+  scroll-behavior: smooth;
+  background: var(--bg);
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  background: transparent;
-}
-
-#root {
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  background: transparent;
-}
-
-.app {
-  min-height: 100vh;
-  background: linear-gradient(135deg, #f0f6fb 0%, #e8f1f8 100%);
-  // background: transparent;
-  padding-top: 0;
-  color: $text-primary;
-  font-family: $font-primary;
-  line-height: $leading-normal;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
-.main-content {
+// subtle grid texture behind the top of the page
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 30%, transparent 75%);
+}
+
+::selection {
+  background: var(--accent);
+  color: #04110e;
+}
+
+a { color: inherit; text-decoration: none; }
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+h1, h2, h3, h4, h5, h6 { margin: 0; font-weight: inherit; font-size: inherit; }
+
+*:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+*:focus:not(:focus-visible) { outline: none; }
+
+.app { position: relative; min-height: 100vh; }
+.main-content { position: relative; z-index: 1; }
+
+// ===========================
+// SHARED UI
+// ===========================
+.wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 24px;
   position: relative;
   z-index: 1;
 }
 
-// Global link styles
-a {
-  color: $primary-blue;
-  text-decoration: none;
-  transition: $transition-colors;
+kbd {
+  font-family: var(--mono);
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 5px;
+  border: 1px solid var(--border-strong);
+  background: var(--bg-2);
+  color: var(--text-2);
+}
 
-  &:hover {
-    color: $secondary-purple;
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 18px;
+  border-radius: 10px;
+  white-space: nowrap;
+  transition: transform 0.2s, background 0.2s, border-color 0.2s, box-shadow 0.2s;
+
+  svg { width: 16px; height: 16px; }
+
+  &--primary {
+    background: var(--text);
+    color: var(--bg);
+
+    &:hover {
+      transform: translateY(-1px);
+      background: #fff;
+      box-shadow: 0 8px 30px -8px rgba(94, 234, 212, 0.5);
+    }
   }
 
-  &:focus {
-    outline: 2px solid $primary-blue;
-    outline-offset: 2px;
-    border-radius: $radius-sm;
+  &--ghost {
+    border: 1px solid var(--border-strong);
+    color: var(--text);
+    background: rgba(255, 255, 255, 0.02);
+
+    &:hover {
+      border-color: rgba(255, 255, 255, 0.28);
+      background: rgba(255, 255, 255, 0.05);
+    }
+  }
+
+  &--sm { padding: 7px 14px; font-size: 13px; }
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.chip {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-2);
+  padding: 5px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--bg-2);
+}
+
+.num {
+  color: var(--text);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+// section scaffolding
+section.block {
+  padding: 120px 0;
+  position: relative;
+  z-index: 1;
+  scroll-margin-top: var(--nav-h);
+
+  @include phone { padding: 80px 0; }
+}
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--accent);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  &::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
   }
 }
 
-// Button reset
-button {
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-  color: inherit;
-  background: none;
-  border: none;
-  padding: 0;
-  margin: 0;
-  cursor: pointer;
+.h2 {
+  font-size: clamp(32px, 4vw, 48px);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  font-weight: 600;
+  margin-top: 16px;
+  max-width: 720px;
+
+  .muted { color: var(--text-3); }
 }
 
-// Image responsive defaults
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  margin-bottom: 56px;
+  flex-wrap: wrap;
 }
 
-// Heading reset
-h1, h2, h3, h4, h5, h6 {
-  margin: 0;
-  font-weight: inherit;
-  font-size: inherit;
+// scroll reveal (class "in" is added by useScrollAnimation)
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s $ease-out, transform 0.8s $ease-out;
+
+  &.in { opacity: 1; transform: none; }
 }
 
-// Paragraph reset
-p {
-  margin: 0;
+@keyframes ping {
+  0% { transform: scale(0.6); opacity: 1; }
+  100% { transform: scale(1.8); opacity: 0; }
 }
 
-// Focus visible for keyboard navigation
-*:focus-visible {
-  outline: 2px solid $primary-blue;
-  outline-offset: 2px;
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
 }
 
-*:focus:not(:focus-visible) {
-  outline: none;
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .reveal { opacity: 1; transform: none; }
 }

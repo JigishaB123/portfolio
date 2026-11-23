@@ -2,9 +2,10 @@ export const education = [
     {
       id: 1,
       degree: "Master of Science in Software Engineering Systems",
+      shortDegree: "M.S. Software Engineering",
       school: "Northeastern University",
       year: "2024-2026",
-      gpa: "4.0/4.0",
+      gpa: "3.7/4.0",
       relevant: [
         "Object Oriented Design", 
         "Wed Development", 
@@ -15,6 +16,7 @@ export const education = [
     {
       id: 2,
       degree: "B.E. in Computer Engineering",
+      shortDegree: "B.E. Computer Engineering",
       school: "Pune University",
       year: "2016-2020",
       gpa: "9.04/10.00",

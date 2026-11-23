@@ -1,95 +1,87 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Menu, X } from 'lucide-react';
-import { scrollToSection } from '../../../utils/scrollToSection';
+import { personalInfo } from '../../../data/personalInfo';
 import './Navigation.scss';
 
-const Navigation = () => {
-  const [activeSection, setActiveSection] = useState('Home');
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+const navItems = [
+  { id: 'about', label: 'About' },
+  { id: 'experience', label: 'Experience' },
+  { id: 'projects', label: 'Projects' },
+  { id: 'stack', label: 'Skills & Tools' },
+  { id: 'contact', label: 'Contact' }
+];
 
-  const navItems = [
-    { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About' },
-    { id: 'skills', label: 'Skills' },
-    { id: 'experience', label: 'Experience' },
-    { id: 'projects', label: 'Projects' },
-    { id: 'contact', label: 'Contact' }
-  ];
+const initials = personalInfo.name
+  .split(' ')
+  .map((w) => w[0])
+  .join('')
+  .toUpperCase();
+
+const Navigation = ({ activeSection, onOpenPalette }) => {
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const handleNavClick = (sectionId) => {
-    setActiveSection(sectionId);
-    setIsMenuOpen(false);
-    
-    // Scroll to section
-    scrollToSection(sectionId);
-  };
+  const isMac = typeof navigator !== 'undefined' && /Mac|iPhone|iPad/.test(navigator.platform);
 
   return (
-    <nav className="navigation">
-      <div className="navigation__container">
-        <div className="navigation__content">
-          {!isMobile && (
-            <ul className="navigation__desktop-nav">
-              {navItems.map((item) => (
-                <li key={item.id}>
-                  <button
-                    onClick={() => handleNavClick(item.id)}
-                    className={`navigation__nav-button ${
-                      activeSection === item.id ? 'navigation__nav-button--active' : ''
-                    }`}
-                  >
-                    {item.label}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          )}
+    <header className={`nav ${scrolled || menuOpen ? 'nav--scrolled' : ''}`}>
+      <div className="wrap nav__inner">
+        <a href="#home" className="nav__logo" onClick={() => setMenuOpen(false)}>
+          <span className="nav__mark">{initials}</span>
+        </a>
 
-          {isMobile && (
-            <>
-              <div className="navigation__logo">
-                {navItems.find(item => item.id === activeSection)?.label || 'Menu'}
-              </div>
-              <button
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className={`navigation__mobile-button ${
-                  isMenuOpen ? 'navigation__mobile-button--active' : ''
-                }`}
+        <ul className="nav__links">
+          {navItems.map((item) => (
+            <li key={item.id}>
+              <a
+                href={`#${item.id}`}
+                className={activeSection === item.id ? 'is-active' : ''}
+                aria-current={activeSection === item.id ? 'true' : undefined}
               >
-                {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-              </button>
-            </>
-          )}
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <div className="nav__right">
+          <button className="nav__search" onClick={onOpenPalette} aria-label="Open command palette">
+            <span className="nav__search-label">Search</span>
+            <kbd>{isMac ? '⌘K' : 'Ctrl K'}</kbd>
+          </button>
+          <a className="btn btn--primary btn--sm" href={personalInfo.resume} download>
+            Resume
+          </a>
+          <button
+            className="nav__burger"
+            onClick={() => setMenuOpen((o) => !o)}
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={menuOpen}
+          >
+            {menuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
         </div>
       </div>
 
-      {isMobile && isMenuOpen && (
-        <div className="navigation__mobile-menu">
+      {menuOpen && (
+        <ul className="nav__mobile">
           {navItems.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => handleNavClick(item.id)}
-              className={`navigation__mobile-nav-button ${
-                activeSection === item.id ? 'navigation__mobile-nav-button--active' : ''
-              }`}
-            >
-              {item.label}
-            </button>
+            <li key={item.id}>
+              <a href={`#${item.id}`} onClick={() => setMenuOpen(false)}>
+                {item.label}
+              </a>
+            </li>
           ))}
-        </div>
+        </ul>
       )}
-    </nav>
+    </header>
   );
 };
 

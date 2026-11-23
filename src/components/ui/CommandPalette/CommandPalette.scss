@@ -1,0 +1,84 @@
+.cmdk-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 16vh;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+  animation: cmdkFade 0.15s;
+}
+
+.cmdk {
+  width: min(560px, calc(100% - 32px));
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: 14px;
+  box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.8);
+  overflow: hidden;
+  animation: cmdkPop 0.18s cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  &__input {
+    width: 100%;
+    padding: 18px 20px;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+    font: inherit;
+    font-size: 15px;
+    outline: none;
+  }
+
+  &__list {
+    list-style: none;
+    max-height: 340px;
+    overflow: auto;
+    padding: 8px;
+  }
+
+  &__group {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-3);
+    padding: 10px 12px 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  &__item {
+    padding: 10px 12px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: var(--text-2);
+    cursor: pointer;
+
+    &--selected {
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text);
+    }
+  }
+
+  &__hint {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-3);
+  }
+
+  &__foot {
+    display: flex;
+    gap: 16px;
+    padding: 10px 16px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--text-3);
+  }
+}
+
+@keyframes cmdkFade { from { opacity: 0; } }
+@keyframes cmdkPop { from { transform: scale(0.97); opacity: 0; } }

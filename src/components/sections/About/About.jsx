@@ -1,53 +1,53 @@
 import React from 'react';
 import { personalInfo } from '../../../data/personalInfo';
+import { education } from '../../../data/education';
 import './About.scss';
 
-const About = ({ isVisible }) => {
-
-  return (
-    <section id="about" className="about">
-      <div className="about__container">
-        <div className={`about__content ${isVisible ? 'about__content--visible' : 'about__content--hidden'}`}>
-          <h2 className="about__title">About Me</h2>
-          
-          <div className="about__grid">
-            <div className="about__text">
-              {personalInfo.bio.map((paragraph, index) => (
-                <p key={index} className="about__paragraph">
-                  {paragraph}
-                </p>
-              ))}
-            </div> 
-            
-          <div className="about__highlights">
-            <div className="about__highlight-card">
-              <div className="about__highlight-badge about__highlight-badge--education">
-                🎓 EDUCATION
-              </div>
-              <h3 className="about__highlight-title">MS in Software Engineering Systems</h3>
-              <p className="about__highlight-subtitle">Northeastern University • 2024-2026</p>
-            </div>
-
-            <div className="about__highlight-card">
-              <div className="about__highlight-badge about__highlight-badge--opensource">
-                🌱 OPEN SOURCE CONTRIBUTION
-              </div>
-              <h3 className="about__highlight-title">
-                NPM Package ·{' '}
-                <a href="https://www.npmjs.com/package/cards-key-point-indicator" className="about__highlight-link">
-                  cards-key-point-indicator
-                </a>
-              </h3>
-              <p className="about__highlight-subtitle">
-              A reusable component for structured key-point indicator cards, built for dashboards and data-rich UIs.
-              </p>
-            </div>
-          </div>
-          </div>
+const About = () => (
+  <section className="block" id="about">
+    <div className="wrap">
+      <div className="section-head reveal">
+        <div>
+          <div className="eyebrow">01 · About</div>
+          <h2 className="h2">
+            Backend depth, cloud fluency, <span className="muted">and a growing edge in applied AI.</span>
+          </h2>
         </div>
       </div>
-    </section>
-  );
-};
+
+      <div className="about">
+        <div className="about__text reveal">
+          {personalInfo.bio.map((p, i) => (
+            <p key={i}>{p}</p>
+          ))}
+        </div>
+
+        <aside className="about__side reveal">
+          <div className="about__profile">
+            <img src={personalInfo.avatar} alt={personalInfo.name} />
+            <div>
+              <div className="about__name">{personalInfo.name}</div>
+              <div className="about__meta">{personalInfo.location}</div>
+              {/* {personalInfo.availability && (
+                <div className="about__meta about__meta--accent">● {personalInfo.availability}</div>
+              )} */}
+            </div>
+          </div>
+
+          {education.map((e) => (
+            <div className="about__edu" key={e.id}>
+              <div className="about__edu-top">
+                <span>{e.year.replace('-', ' — ')}</span>
+                {e.gpa && <span className="about__gpa">GPA {e.gpa}</span>}
+              </div>
+              <h4>{e.degree}</h4>
+              <p>{e.school}</p>
+            </div>
+          ))}
+        </aside>
+      </div>
+    </div>
+  </section>
+);
 
 export default About;

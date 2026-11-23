@@ -138,3 +138,9 @@
     margin-bottom: $spacing-16;
     @include gradient-text;
   }
+
+// ===========================
+// NEW LAYOUT MIXINS
+// ===========================
+@mixin tablet { @media (max-width: #{$bp-tablet}) { @content; } }
+@mixin phone  { @media (max-width: #{$bp-phone}) { @content; } }

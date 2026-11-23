@@ -1,201 +1,125 @@
 @import '../../../styles/abstracts/variables';
 @import '../../../styles/abstracts/mixins';
 
-.experience-modern {
-  padding: $spacing-20 $spacing-4;
+.exp {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 48px;
 
-  &__container {
-    @include container;
+  @include tablet {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
   }
 
-  &__content {
-    transition: all 1s ease;
-
-    &--visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    &--hidden {
-      opacity: 0;
-      transform: translateY(40px);
-    }
-  }
-
-  &__title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: $text-primary;
-    margin-bottom: $spacing-1;
-    @include section-title;
-    
-    @include respond-below(md) {
-      font-size: 2rem;
-    }
-    
-    @include respond-below(sm) {
-      font-size: 1.75rem;
-    }
-  }
-
-  &__subtitle {
-    font-size: $font-lg;
-    color: $text-secondary;
-    margin-bottom: $spacing-4;
-    
-    @include respond-below(sm) {
-      font-size: $font-base;
-      margin-bottom: $spacing-2;
-    }
-  }
-
-  &__list {
+  &__tabs {
     display: flex;
     flex-direction: column;
-    gap: $spacing-6;
+    border-left: 1px solid var(--border);
+    position: sticky;
+    top: 100px;
+    align-self: start;
+
+    @include tablet {
+      position: static;
+      flex-direction: row;
+      overflow-x: auto;
+      border-left: 0;
+      border-bottom: 1px solid var(--border);
+    }
   }
 
-  &__card {
-    background: white;
-    border: 1px solid #e5e7eb;
-    border-radius: 16px;
-    padding: $spacing-8;
-    display: grid;
-    grid-template-columns: 300px 1px 1fr;
-    gap: $spacing-8;
-    transition: all 0.3s ease;
-    
+  &__tab {
+    text-align: left;
+    padding: 14px 20px;
+    border-left: 2px solid transparent;
+    margin-left: -1px;
+    color: var(--text-3);
+    transition: color 0.2s, border-color 0.2s, background 0.2s;
+
     &:hover {
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-      transform: translateY(-2px);
+      color: var(--text-2);
+      background: rgba(255, 255, 255, 0.02);
     }
-    
-    @include respond-below(lg) {
-      grid-template-columns: 250px 1px 1fr;
-      gap: $spacing-6;
-      padding: $spacing-6;
+
+    &--active {
+      color: var(--text);
+      border-left-color: var(--accent);
+      background: linear-gradient(90deg, var(--accent-dim), transparent);
     }
-    
-    @include respond-below(md) {
-      grid-template-columns: 1fr;
-      gap: $spacing-4;
-      padding: $spacing-5;
-    }
-  }
 
-  &__left {
-    display: flex;
-    flex-direction: column;
-    gap: $spacing-2;
-  }
+    @include tablet {
+      border-left: 0;
+      border-bottom: 2px solid transparent;
+      margin: 0 0 -1px;
+      white-space: nowrap;
 
-  &__period {
-    font-size: 0.813rem;
-    font-weight: 600;
-    color: #2980b9;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    background: rgba(5, 150, 105, 0.1);
-    padding: $spacing-2 $spacing-3;
-    border-radius: 10px;
-    display: inline-block;
-    width: fit-content;
-  }
-
-  &__company {
-    font-size: $font-xl;
-    font-weight: 700;
-    color: $text-primary;
-    margin: 0;
-    line-height: 1.3;
-    
-    @include respond-below(md) {
-      font-size: $font-lg;
-    }
-  }
-
-  &__title-role {
-    font-size: $font-base;
-    color: $text-secondary;
-    margin: 0;
-    line-height: 1.5;
-    
-    @include respond-below(md) {
-      font-size: $font-sm;
-    }
-  }
-
-  &__divider {
-    width: 1px;
-    background: #c9cbce;
-    
-    @include respond-below(md) {
-      display: none;
-    }
-  }
-
-  &__right {
-    display: flex;
-    flex-direction: column;
-  }
-
-  &__responsibilities {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: $spacing-4;
-  }
-
-  &__responsibility-item {
-    color: $text-secondary;
-    font-size: $font-base;
-    line-height: 1.7;
-    padding-left: $spacing-5;
-    position: relative;
-    
-    &::before {
-      content: '•';
-      color: $text-secondary;
-      position: absolute;
-      left: 0;
-      font-size: 1.2rem;
-      line-height: 1.7;
-    }
-    
-    @include respond-below(md) {
-      font-size: $font-sm;
-      padding-left: $spacing-4;
-    }
-  }
-}
-
-// Reduced motion support
-@media (prefers-reduced-motion: reduce) {
-  .experience-modern {
-    &__content {
-      transition: none;
-    }
-    
-    &__card {
-      transition: none;
-      
-      &:hover {
-        transform: none;
+      &--active {
+        border-bottom-color: var(--accent);
+        background: none;
       }
     }
   }
-}
 
-// Print styles
-@media print {
-  .experience-modern {
-    &__card {
-      border: 1px solid #000 !important;
-      background: white !important;
-      box-shadow: none !important;
-      page-break-inside: avoid;
+  &__co {
+    display: block;
+    font-weight: 500;
+    font-size: 15px;
+  }
+
+  &__yr {
+    font-family: var(--mono);
+    font-size: 11px;
+  }
+
+  &__panel { animation: fadeUp 0.5s $ease-out; }
+
+  &__title {
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+
+    span { color: var(--accent); }
+  }
+
+  &__meta {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-3);
+    margin: 6px 0 28px;
+    display: flex;
+    gap: 16px;
+  }
+
+  &__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+
+    li {
+      position: relative;
+      padding: 18px 20px 18px 48px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text-2);
+      font-size: 15px;
+      transition: border-color 0.2s, transform 0.2s;
+
+      &::before {
+        content: '→';
+        position: absolute;
+        left: 20px;
+        top: 18px;
+        font-family: var(--mono);
+        color: var(--accent);
+        font-size: 14px;
+      }
+
+      &:hover {
+        border-color: var(--border-strong);
+        transform: translateX(4px);
+      }
     }
   }
 }

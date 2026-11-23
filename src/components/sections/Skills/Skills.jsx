@@ -1,48 +1,47 @@
 import React from 'react';
 import { skills } from '../../../data/skills';
 import './Skills.scss';
-import './Skills.scss';
 
-const Skills = ({ isVisible }) => {
+// Display names for the keys in data/skills.js (unknown keys fall back to the key itself)
+const LABELS = {
+  programming: 'Languages',
+  backend: 'Backend',
+  frontend: 'Frontend',
+  databases: 'Data',
+  cloud: 'Cloud & DevOps',
+  ai: 'AI & LLM',
+  tools: 'Testing & Build'
+};
 
-      // Category titles
-      const categoryTitles = {
-        programming: 'Languages',
-        backend: 'Backend Development',
-        frontend: 'Frontend Development',
-        databases: 'Databases',
-        cloud: 'Cloud & DevOps',
-        ai: 'AI / Developer Tools',
-        tools: 'Testing & Tools',
-      };
-  
-  return (
-        <section id="skills" className="skills-minimal">
-          <div className="skills-minimal__container">
-            <div className={`skills-minimal__content ${isVisible ? 'skills-minimal__content--visible' : 'skills-minimal__content--hidden'}`}>
-              <h2 className="skills-minimal__title">Technical Skills</h2>
-              
-              <div className="skills-minimal__grid">
-                {Object.entries(skills).map(([category, skillList]) => (
-                  <div key={category} className="skills-minimal__category">
-                    <h3 className="skills-minimal__category-title">
-                      {categoryTitles[category] || category}
-                    </h3>
-                    <div className="skills-minimal__pills">
-                      {skillList.map((skill) => (
-                        <span key={skill} className="skills-minimal__pill">
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
+const Skills = () => (
+  <section className="block" id="stack">
+    <div className="wrap">
+      <div className="section-head reveal">
+        <div>
+          <div className="eyebrow">04 · Skills & Tools</div>
+          <h2 className="h2">
+            Tools I reach for <span className="muted">in production.</span>
+          </h2>
+        </div>
+      </div>
+
+      <div className="stack reveal">
+        {Object.entries(skills).map(([key, items], i) => (
+          <div className="stack__cell" key={key}>
+            <h4>
+              {LABELS[key] || key}
+              <span>{String(i + 1).padStart(2, '0')}</span>
+            </h4>
+            <div className="stack__items">
+              {items.map((s) => (
+                <span className="chip" key={s}>{s}</span>
+              ))}
             </div>
           </div>
-        </section>
-      );
+        ))}
+      </div>
+    </div>
+  </section>
+);
 
-  };
-  
-  export default Skills;
+export default Skills;
